@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Домашние задания</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+
+    <header>
+        <h1>Мои Домашние работы</h1>
+    </header>
+
+    <main id="main">
+        <div class="container">
+            <div class="cards">
+                {% for hw in homeworks %}
+                    <a href="{% url 'homework_detail' hw.id %}" class="card">
+                        <h2>{{ hw.title }}</h2>
+                        <p>{{ hw.description|truncatewords:20 }}</p>
+                    </a>
+                {% empty %}
+                    <p>Нет заданий</p>
+                {% endfor %}
+            </div>
+        </div>
+        
+    </main>
+
+    <footer>
+        <p>© 2025 Django Homework</p>
+    </footer>
+
+</body>
+</html>

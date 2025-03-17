@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ homework.title }}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+
+    <header>
+        <h1>{{ homework.title }}</h1>
+        <a href="{% url 'home' %}" class="back-button">← Назад</a>
+    </header>
+
+    <main class="content">
+        <h3>Описание:</h3>
+        <p>{{ homework.description }}</p>
+
+        {% if homework.id == 1 %}
+            <a href="{% url 'hello_world' %}" class="run-button">Запустить «Hello world!»</a>
+        {% elif json_data %}
+            <h3>Данные с API:</h3>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Задача</th>
+                    <th>Статус</th>
+                </tr>
+                {% for item in json_data %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.completed }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>© 2025 Django Homework</p>
+    </footer>
+
+</body>
+</html>
