@@ -1,80 +1,95 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ homework.title }}</title>
+    {% load static %}
     <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
 <body>
 
-    <header>
-        <h1>{{ homework.title }}</h1>
-        <a href="{% url 'home' %}" class="back-button">← Назад</a>
-    </header>
 
-    <main class="content">
-        <h3>Описание:</h3>
-        <p>{{ homework.description }}</p>
+        <header>
+            <h1>{{ homework.title }}</h1>
+            <a href="{% url 'home' %}" class="back-button">← Назад</a>
+        </header>
 
-        {% if homework.id == 1 %}
-        <a href="{% url 'hello_world' %}" class="run-button">Запустить «Hello world!»</a>
-        {% elif json_data %}
-        <h3>Данные с API:</h3>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Задача</th>
-                <th>Статус</th>
-            </tr>
-            {% for item in json_data %}
-            <tr>
-                <td>{{ item.id }}</td>
-                <td>{{ item.title }}</td>
-                <td>{{ item.completed }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-        {% endif %}
+        <main class="content">
+            <h3>Описание:</h3>
+            <p>{{ homework.description }}</p>
 
-        {% if books %}
-        <h2>Список книг:</h2>
-        <ul>
-            {% for book in books %}
-            <li>
-                <strong>{{ book.title }}</strong> - {{ book.author.first_name }} {{ book.author.last_name }}
-            </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+            {% if homework.id == 1 %}
+            <a href="{% url 'hello_world' %}" class="run-button">Запустить «Hello world!»</a>
+            {% elif json_data %}
+            <h3>Данные с API:</h3>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Задача</th>
+                    <th>Статус</th>
+                </tr>
+                {% for item in json_data %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.completed }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
 
-        {% if reader %}
-        <h2>Список читателей:</h2>
-        <ul>
-            {% for reader_item in reader %}
+            {% if books %}
+            <h2>Список книг:</h2>
+            <ul>
+                {% for book in books %}
+                <li>
+                    <strong>{{ book.title }}</strong> - {{ book.author.first_name }} {{ book.author.last_name }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
 
-            <li>
-                <strong>{{ reader_item.first_name }} {{ reader_item.last_name }}</strong>
-                <ul>
-                    <br>
-                    {% for book in reader_item.books.all %}
-                    <li>{{ book.title }}</li> <br>
-                    {% endfor %}
-                </ul>
-            </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+            {% if reader %}
+            <h2>Список читателей:</h2>
+            <ul>
+                {% for reader_item in reader %}
+                <li>
+                    <strong>{{ reader_item.first_name }} {{ reader_item.last_name }}</strong>
+                    <ul>
+                        <br>
+                        {% for book in reader_item.books.all %}
+                        <li>{{ book.title }}</li> <br>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
 
-    </main>
-
+            {% if homework.id == 5 %}
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="{% url 'home_log' %}">Главная</a>
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'login' %}">Войти</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            <section>
+                <h2>Добро пожаловать на главную страницу</h2>
+                <p>Здесь контент главной странтцы</p>
+            </section>
+            {% endif %}
+        </main>
+    </div>
     <footer>
         <p>© 2025 Django Homework</p>
     </footer>
-
+    <script src="{% static 'js/scripts.js' %}"></script>
 </body>
-
 </html>

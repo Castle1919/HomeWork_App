@@ -1,10 +1,10 @@
 import requests
 import json
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
 from .models import Homework
 from django.http import HttpResponse
 from library.models import Book, Reader, Author
-
 def fetch_data():
     response = requests.get("https://jsonplaceholder.typicode.com/todos/")
     if response.status_code == 200:
@@ -26,8 +26,17 @@ def homework_detail(request, pk):
     if homework.id == 2:
         json_data = fetch_data()
 
-    return render(request, 'homework/detail.html', {'homework': homework, 'json_data': json_data, 'books': books, 'reader': reader})
+    return render(request, 'homework/detail.html', {'homework': homework, 'json_data': json_data, 'books': books, 'reader': reader,})
 
+def go_to_homework(request, pk):
+    url = reverse('homework_detail', kwargs={'pk': pk})
+    return redirect(url)
 
 def hello_world(request):
     return HttpResponse("<h1 style='color:green; text-align:center;'>Hello world!</h1>")
+
+def home_log(request):
+    return render(request, 'homework/home_log.html')
+
+def login_view(request):
+    return render(request, 'homework/login.html')
