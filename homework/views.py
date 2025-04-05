@@ -46,7 +46,7 @@ def login_view(request):
 
 def download_existing_zip(request):
     zip_filename = "scripts.zip" 
-    zip_path = os.path.join(settings.MEDIA_ROOT, zip_filename)
+    zip_path = os.path.abspath(os.path.join(settings.MEDIA_ROOT, zip_filename))
 
     if os.path.exists(zip_path):
         return FileResponse(open(zip_path, 'rb'), as_attachment=True, filename=zip_filename)
