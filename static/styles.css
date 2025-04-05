@@ -61,7 +61,6 @@ footer {
     margin: 20px;
 }
 
-/* Стилизация кнопки "Назад" */
 .back-button {
     display: inline-block;
     padding: 8px 15px;
@@ -81,7 +80,6 @@ footer {
 
 }
 
-/* Таблица */
 table {
     width: 80%;
     border-collapse: collapse;
