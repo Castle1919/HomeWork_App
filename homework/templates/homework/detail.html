@@ -85,6 +85,17 @@
                 <p>Здесь контент главной странтцы</p>
             </section>
             {% endif %}
+
+            {% if homework.id == 6 %}
+            <a href="{% url 'download_zip' %}" class="btn btn-primary">Скачать скрипты</a>
+
+            {% endif %}
+
+            {% if homework.id == 7 %}
+            <a href="{% url 'home_flower' %}" class="btn btn-primary">Перейти на сайт</a>
+
+            {% endif %}
+
         </main>
     </div>
     <footer>

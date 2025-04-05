@@ -3,8 +3,11 @@ import json
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from .models import Homework
-from django.http import HttpResponse
+from django.http import FileResponse, HttpResponse
 from library.models import Book, Reader, Author
+import os
+from django.conf import settings
+
 def fetch_data():
     response = requests.get("https://jsonplaceholder.typicode.com/todos/")
     if response.status_code == 200:
@@ -40,3 +43,21 @@ def home_log(request):
 
 def login_view(request):
     return render(request, 'homework/login.html')
+
+def download_existing_zip(request):
+    zip_filename = "scripts.zip" 
+    zip_path = os.path.join(settings.MEDIA_ROOT, zip_filename)
+
+    if os.path.exists(zip_path):
+        return FileResponse(open(zip_path, 'rb'), as_attachment=True, filename=zip_filename)
+    else:
+        return HttpResponse("Файл не найден", status=404)
+    
+def home_flower(request):
+    return render(request, 'homework/home_flower.html')
+
+def about_flower(request):
+    return render(request, 'homework/about_flower.html')
+
+def contact_flower(request):
+    return render(request, 'homework/contact_flower.html')

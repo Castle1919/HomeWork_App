@@ -1,0 +1,147 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цветочный магазин</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Хедер */
+        header {
+            background: #ff6b81;
+            padding: 15px;
+            color: #fff;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Навигация */
+        nav {
+            background: #ff4d6d;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 8px 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: #ff8fa3;
+            border-radius: 5px;
+        }
+
+        /* Главный контент */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #ff4d6d;
+        }
+
+        .flowers {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .flower-item {
+            background: #ffe5ec;
+            padding: 15px;
+            border-radius: 8px;
+            width: 30%;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .flower-item img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Футер */
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 50px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>🌸 Цветочный магазин 🌸</header>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'home_flower' %}">Главная</a></li>
+            <li><a href="{% url 'about_flower' %}">О нас</a></li>
+            <li><a href="{% url 'contact_flower' %}">Контакты</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Добро пожаловать!</h1>
+        <p>Мы предлагаем широкий выбор цветов на все случаи жизни.</p>
+
+        <h2>🌿 Наши цветы 🌿</h2>
+        <div class="flowers">
+            <div class="flower-item">
+                <img src="https://avatars.mds.yandex.net/i?id=84186f4bba2caf0e21d2a10d2f050483_l-10767321-images-thumbs&n=13" alt="Розы">
+                <h3>Розы</h3>
+                <p>Прекрасные красные розы для ваших любимых.</p>
+            </div>
+            <div class="flower-item">
+                <img src="https://avatars.mds.yandex.net/i?id=8a5c3713f66a49e0a41dfd8a7fc3880ec0c15b0b-10137431-images-thumbs&n=13" alt="Тюльпаны">
+                <h3>Тюльпаны</h3>
+                <p>Прекрасные тюльпаны для любого случая.</p>
+            </div>
+            <div class="flower-item">
+                <img src="https://cdn1.ozone.ru/s3/multimedia-a/6335769058.jpg" alt="Пионы">
+                <h3>Пионы</h3>
+                <p>Пионы - символ весны и любви.</p>
+            </div>
+        </div>
+    </div>
+    <a href="{% url 'go_to_homework' pk=7 %}" >Перейти на сайт c ДЗ</a>
+
+    <footer>
+        <p>&copy; 2025 Цветочный магазин | Все права защищены</p>
+    </footer>
+
+</body>
+</html>

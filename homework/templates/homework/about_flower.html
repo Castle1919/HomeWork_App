@@ -1,0 +1,127 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас | Цветочный магазин</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Хедер */
+        header {
+            background: #ff6b81;
+            padding: 15px;
+            color: #fff;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Навигация */
+        nav {
+            background: #ff4d6d;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 8px 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: #ff8fa3;
+            border-radius: 5px;
+        }
+
+        /* Контейнер */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-section {
+            text-align: left;
+            line-height: 1.6;
+            padding: 15px;
+        }
+
+        h1, h2 {
+            color: #ff4d6d;
+            margin-bottom: 15px;
+        }
+
+        /* Футер */
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 50px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>🌸 О нас | Цветочный магазин 🌸</header>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'home_flower' %}">Главная</a></li>
+            <li><a href="{% url 'about_flower' %}">О нас</a></li>
+            <li><a href="{% url 'contact_flower' %}">Контакты</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>О нашем магазине</h1>
+        <div class="about-section">
+            <h2>🌷 Любовь к цветам в каждом букете 🌷</h2>
+            <p>Наш магазин — это место, где цветы оживают! Мы работаем с лучшими поставщиками и заботимся о качестве каждого цветка.</p>
+
+            <h2>💐 Почему выбирают нас?</h2>
+            <p>✔ Свежие цветы каждый день<br>
+               ✔ Индивидуальные букеты для любого случая<br>
+               ✔ Доставка по городу<br>
+               ✔ Уникальный дизайн композиций</p>
+
+            <h2>🎨 Наш стиль</h2>
+            <p>Мы вдохновляемся природой и создаем цветочные композиции, которые радуют глаз и душу. Наша команда флористов — настоящие художники!</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Цветочный магазин | Все права защищены</p>
+    </footer>
+
+</body>
+</html>

@@ -8,4 +8,10 @@ urlpatterns = [
     path('hello-world/', views.hello_world, name='hello_world'),
     path('home_log/', views.home_log, name='home_log'),
     path('login/', views.login_view, name='login'),
+    path('download/', views.download_existing_zip, name='download_zip'),
+    path('home_flower/', views.home_flower, name='home_flower'),
+    path('about_flower/', views.about_flower, name='about_flower'),
+    path('contact_flower/', views.contact_flower, name='contact_flower')
+    
+
 ]

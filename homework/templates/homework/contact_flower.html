@@ -1,0 +1,166 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты | Цветочный магазин</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Хедер */
+        header {
+            background: #ff6b81;
+            padding: 15px;
+            color: #fff;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Навигация */
+        nav {
+            background: #ff4d6d;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 8px 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: #ff8fa3;
+            border-radius: 5px;
+        }
+
+        /* Контейнер */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-section {
+            text-align: left;
+            line-height: 1.6;
+            padding: 15px;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+        }
+
+        h1, h2 {
+            color: #ff4d6d;
+            margin-bottom: 15px;
+        }
+
+        /* Форма */
+        .contact-form {
+            background: #ffe5ec;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .contact-form button:hover {
+            background: #ff8fa3;
+        }
+
+        /* Футер */
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 50px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>🌸 Контакты | Цветочный магазин 🌸</header>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'home_flower' %}">Главная</a></li>
+            <li><a href="{% url 'about_flower' %}">О нас</a></li>
+            <li><a href="{% url 'contact_flower' %}">Контакты</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Свяжитесь с нами</h1>
+
+        <div class="contact-section">
+            <h2>📞 Наши контакты</h2>
+            <p><strong>Адрес:</strong> ул. Цветочная, 15, Астана</p>
+            <p><strong>Телефон:</strong> +7 (777) 123-45-67</p>
+            <p><strong>Email:</strong> info@flowerstore.kz</p>
+            <p><strong>График работы:</strong> Пн–Сб: 9:00 – 20:00, Вс: 10:00 – 18:00</p>
+        </div>
+
+        <div class="contact-form">
+            <h2>💌 Напишите нам</h2>
+            <form>
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="email" placeholder="Ваш email" required>
+                <textarea placeholder="Ваше сообщение" rows="4" required></textarea>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Цветочный магазин | Все права защищены</p>
+    </footer>
+
+</body>
+</html>
