@@ -51,7 +51,7 @@ def download_existing_zip(request):
     if os.path.exists(zip_path):
         return FileResponse(open(zip_path, 'rb'), as_attachment=True, filename=zip_filename)
     else:
-        return HttpResponse("Файл не найден", status=404)
+        return HttpResponse("Файл не найден!", status=404)
     
 def home_flower(request):
     return render(request, 'homework/home_flower.html')
