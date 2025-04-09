@@ -1,14 +1,29 @@
-
 from pathlib import Path
 import os
 
+DEBUG = True
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+LANGUAGE_CODE = 'ru-RU'
 
+TIME_ZONE = 'Asia/Almaty'
+
+TIME_ZONE = 'UTC'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+
+STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 SECRET_KEY = 'django-insecure-!#^v9mv6f3hvxbxa^&$iibwwzllsnq)$^gxy)gke2_4(sebz-h'
-
-DEBUG = True
 
 ALLOWED_HOSTS = [
     'castle.pythonanywhere.com',
@@ -81,19 +96,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_TZ = True
-
-STATIC_URL = '/static/'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

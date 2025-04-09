@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление данными</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        h1, h2 {
+            color: #2c7a7b;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c7a7b;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #2c7a7b;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #285e61;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #2c7a7b;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <button><a href="{% url 'go_to_homework' pk=8 %}"> Перейтина сайт с ДЗ</a></button>
+    <h1>Управление данными</h1>
+    <h2>Добавить продукт</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ product_form.as_p }}
+        <button type="submit" name="product_submit">Добавить продукт</button>
+    </form>
+
+    <h2>Добавить заказ</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ order_form.as_p }}
+        <button type="submit" name="order_submit">Добавить заказ</button>
+    </form>
+
+    <h2>Добавить статью</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ article_form.as_p }}
+        <button type="submit" name="article_submit">Добавить статью</button>
+    </form>
+
+    <h2>Продукты</h2>
+    <table>
+        <tr>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Цена</th>
+            <th>Количество на складе</th>
+            <th>Дата добавления</th>
+            <th>Дата обновления</th>
+        </tr>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.stock }}</td>
+            <td>{{ product.created_at }}</td>
+            <td>{{ product.updated_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Заказы</h2>
+    <table>
+        <tr>
+            <th>Имя покупателя</th>
+            <th>Email покупателя</th>
+            <th>Статус</th>
+            <th>Итоговая стоимость</th>
+            <th>Дата создания</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.customer_name }}</td>
+            <td>{{ order.customer_email }}</td>
+            <td>{{ order.status }}</td>
+            <td>{{ order.total_price }}</td>
+            <td>{{ order.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Статьи</h2>
+    <table>
+        <tr>
+            <th>Заголовок</th>
+            <th>Содержание</th>
+            <th>Slug</th>
+            <th>Дата публикации</th>
+        </tr>
+        {% for article in articles %}
+        <tr>
+            <td>{{ article.title }}</td>
+            <td>{{ article.content }}</td>
+            <td>{{ article.slug }}</td>
+            <td>{{ article.published_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

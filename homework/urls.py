@@ -11,7 +11,7 @@ urlpatterns = [
     path('download/', views.download_existing_zip, name='download_zip'),
     path('home_flower/', views.home_flower, name='home_flower'),
     path('about_flower/', views.about_flower, name='about_flower'),
-    path('contact_flower/', views.contact_flower, name='contact_flower')
+    path('contact_flower/', views.contact_flower, name='contact_flower'),
+    path('manage_data/', views.manage_data, name='manage_data')
     
-
 ]
