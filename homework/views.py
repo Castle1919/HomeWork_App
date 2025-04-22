@@ -9,6 +9,7 @@ import os
 from django.conf import settings
 from .forms import ProductForm, OrderForm, ArticleForm
 from .models import Product, Order, Article
+from . import models
 
 def fetch_data():
     response = requests.get("https://jsonplaceholder.typicode.com/todos/")
@@ -30,8 +31,10 @@ def homework_detail(request, pk):
         reader = Reader.objects.all()
     if homework.id == 2:
         json_data = fetch_data()
+        
+    kiosks = models.IceCreamKiosk.objects.prefetch_related('ice_creams').all()
 
-    return render(request, 'homework/detail.html', {'homework': homework, 'json_data': json_data, 'books': books, 'reader': reader,})
+    return render(request, 'homework/detail.html', {'homework': homework, 'json_data': json_data, 'books': books, 'reader': reader,'kiosks': kiosks})
 
 def go_to_homework(request, pk):
     url = reverse('homework_detail', kwargs={'pk': pk})

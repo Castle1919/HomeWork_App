@@ -59,3 +59,32 @@ class Article(models.Model):
     
     def __str__(self):
         return self.title
+    
+    
+class Person(models.Model):
+    name = models.CharField(max_length=255)
+    age = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"{self.name}, {self.age} лет"
+
+class Child(Person):
+    favorite_ice_cream = models.ForeignKey('IceCream', on_delete=models.SET_NULL, null=True, blank=True)
+
+class IceCream(models.Model):
+    name = models.CharField(max_length=255)
+    flavor = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.name} ({self.flavor})"
+
+class IceCreamKiosk(models.Model):
+    name = models.CharField(max_length=255)
+    location = models.CharField(max_length=255)
+    ice_creams = models.ManyToManyField(IceCream, related_name="kiosks")
+
+    def __str__(self):
+        return f"{self.name} ({self.location})"
+    
+    def get_ice_cream_list(self):
+        return ", ".join([ice_cream.name for ice_cream in self.ice_creams.all()])

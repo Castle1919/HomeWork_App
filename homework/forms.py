@@ -15,3 +15,10 @@ class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
         fields = ['title', 'content']
+
+
+"""
+SELECT authors.name, books.title
+FROM authors
+INNER JOIN books ON authors.id = books.author_id;
+"""
