@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ article.title }}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+</head>
+<body>
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.content }}</p>
+    <p><strong>Опубликовано:</strong> {{ article.published_at }}</p>
+
+    {% if article.is_published_recently %}
+        <span style="color: red;">НОВОЕ!</span>
+    {% endif %}
+
+    <hr>
+    <a href="{% url 'dz10' %}">Вернуться к списку статей</a>
+</body>
+</html>

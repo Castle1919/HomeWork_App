@@ -5,23 +5,7 @@ admin.site.register(models.Homework)
 admin.site.register(models.Product)
 admin.site.register(models.Order)   
 admin.site.register(models.Article)
+admin.site.register(models.Article_2)
+admin.site.register(models.Profile)
+admin.site.register(models.SomeModel)
 
-class IceCreamInline(admin.TabularInline):
-    model = models.IceCreamKiosk.ice_creams.through
-
-@admin.register(models.Person)
-class PersonAdmin(admin.ModelAdmin):
-    list_display = ('name', 'age')
-
-@admin.register(models.Child)
-class ChildAdmin(admin.ModelAdmin):
-    list_display = ('name', 'age', 'favorite_ice_cream')
-
-@admin.register(models.IceCream)
-class IceCreamAdmin(admin.ModelAdmin):
-    list_display = ('name', 'flavor')
-
-@admin.register(models.IceCreamKiosk)
-class IceCreamKioskAdmin(admin.ModelAdmin):
-    list_display = ('name', 'location')
-    inlines = [IceCreamInline]

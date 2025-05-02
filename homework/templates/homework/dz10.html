@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <title>Добавить данные и проверить</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+    <h1>Добавление данных</h1>
+
+    <h2>Добавить статью</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ article_form.as_p }}
+        {% if article_form.errors %}
+        <p style="color:red;">{{ article_form.errors }}</p>
+        {% endif %}
+        <button type="submit">Добавить статью</button>
+    </form>
+
+    <h2>Добавить профиль</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ profile_form.as_p }}
+        {% if profile_form.errors %}
+        <p style="color:red;">{{ profile_form.errors }}</p>
+        {% endif %}
+        <button type="submit">Добавить профиль</button>
+    </form>
+
+    <h2>Добавить число</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ number_form.as_p }}
+        {% if number_form.errors %}
+        <p style="color:red;">{{ number_form.errors }}</p>
+        {% endif %}
+        <button type="submit">Добавить число</button>
+    </form>
+
+
+    <hr>
+
+    <h2>Статьи</h2>
+    {% for article in articles %}
+    <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+    {% if article.is_published_recently %}
+    <span style="color: red;">НОВОЕ!</span>
+    {% endif %}
+    <br>
+    {% endfor %}
+
+    <h2>Профили</h2>
+    {% for profile in profiles %}
+    <p>Телефон: {{ profile.phone }}</p>
+    {% endfor %}
+
+    <h2>Числа</h2>
+    {% for number in numbers %}
+    <p>{{ number.number }}</p>
+    {% endfor %}
+</body>
+
+</html>
